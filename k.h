@@ -13,6 +13,8 @@ struct game {
     int score;
 };
 
+void print_board(struct game game);
+
 
 /**
  * Adds random A or B tile to the game
