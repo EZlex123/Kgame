@@ -21,11 +21,26 @@ int main(){
 			printf("YOU WON");
 			return 0;
 		} else {
-			printf("enter dy (-1(up), 0(none), 1(down)) , enter dx (-1(left), 0(none), 1(right)): ");
+			printf("enter UP(1) DOWN(2) LEFT(3) RIGHT(4): ");
+			int rot;
+			scanf("%d", &rot);
 			int dy;
-			scanf("%d", &dy);
 			int dx;
-			scanf("%d", &dx);
+			
+			if(rot == 1){
+				dy = -1;
+				dx = 0;
+			} else if(rot == 2){
+				dy = 1;
+				dx = 0;
+			} else if(rot == 3){
+				dy = 0;
+				dx = -1;
+			}else if(rot == 4){
+				dy = 0;
+				dx = 1;
+			}
+
 			if(is_move_possible(game) == 1){
 				if(update(&game, dy, dx) == 1){
 					add_random_tile(&game);

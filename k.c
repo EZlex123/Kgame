@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
 #include "k.h"
 
 void add_random_tile(struct game *game){
@@ -75,6 +76,8 @@ bool update(struct game *game, int dy, int dx){
                         if (game->board[intI][j] == game->board[intI+1][j]){
                             game->board[intI+1][j]++;
                             game->board[intI][j] = ' ';
+
+                            game->score = game->score + pow(2, game->board[intI+1][j] - 64);
                         }
                     }
                 }
@@ -115,6 +118,8 @@ bool update(struct game *game, int dy, int dx){
                             if (game->board[intI][j] == game->board[intI-1][j]){
                                 game->board[intI-1][j]++;
                                 game->board[intI][j] = ' ';
+
+                                game->score = game->score + pow(2, game->board[intI-1][j] - 64);
                             }
                         }
                     }
@@ -159,6 +164,8 @@ bool update(struct game *game, int dy, int dx){
                             if (game->board[i][intJ] == game->board[i][intJ+1]){
                                 game->board[i][intJ+1]++;
                                 game->board[i][intJ] = ' ';
+
+                                game->score = game->score + pow(2, game->board[i][intJ+1] - 64);
                             }
                         }
                     }
@@ -201,6 +208,8 @@ bool update(struct game *game, int dy, int dx){
                             if (game->board[i][intJ] == game->board[i][intJ-1]){
                                 game->board[i][intJ-1]++;
                                 game->board[i][intJ] = ' ';
+
+                                game->score = game->score + pow(2, game->board[i][intJ-1] - 64);
                             }
                         }
                     }
@@ -227,6 +236,9 @@ bool update(struct game *game, int dy, int dx){
 }
 
 void print_board(struct game game){
+
+    printf("             score: %d \n", game.score);
+
     for (int i = 0; i < SIZE; i++){
 		for(int num = 0; num < SIZE; num++){
 			printf("+-------");
