@@ -7,7 +7,7 @@
 #define HOF_FILE "score"
 
 // the delimiter used in score file
-#define DELIMITER " "
+#define DELIMITER ' '
 
 struct player{
     // name of the player (avoid usage of spaces in name)

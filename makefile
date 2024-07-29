@@ -2,20 +2,23 @@
 CC=gcc
 CFLAGS=-std=c11 -Wall -Werror
 LDLIBS=
-OUTPUT=Kgame
+OUTPUT=k
 
 # targets
 all: $(OUTPUT)
 
-$(OUTPUT): K.o main.o
-	cppcheck --enable=performance,unusedFunction --error-exitcode=1 --check-level=exhaustive *.c
-	$(CC) $(CFLAGS) K.o main.o $(LDLIBS) -o $(OUTPUT)
+$(OUTPUT): k.o hof.o main.o
+	cppcheck --enable=performance,unusedFunction --check-level=exhaustive --error-exitcode=1 *.c
+	$(CC) $(CFLAGS) k.o hof.o main.o $(LDLIBS) -o $(OUTPUT)
 
 main.o: main.c
 	$(CC) $(CFLAGS) -c main.c $(LDLIBS) -o main.o
 
-K.o: K.c K.h
-	$(CC) $(CFLAGS) -c K.c $(LDLIBS) -o K.o
+k.o: k.c k.h
+	$(CC) $(CFLAGS) -c k.c $(LDLIBS) -o k.o
+
+hof.o: hof.c hof.h
+	$(CC) $(CFLAGS) -c hof.c $(LDLIBS) -o hof.o
 
 # remove compiled files
 clean: 

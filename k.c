@@ -237,6 +237,8 @@ bool update(struct game *game, int dy, int dx){
 
 void print_board(struct game game){
 
+    printf("\n\n\n\n\n\n\n\n\n\n\n\n");
+
     printf("             score: %d \n", game.score);
 
     for (int i = 0; i < SIZE; i++){
